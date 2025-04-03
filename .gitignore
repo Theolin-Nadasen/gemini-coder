@@ -1,0 +1,22 @@
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# VS Code settings
+.vscode/
+.vscode-test/
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+.DS_Store
+
+# Build files
+dist/
+out/
+coverage/
