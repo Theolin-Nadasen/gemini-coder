@@ -2,17 +2,27 @@ const vscode = require('vscode');
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 
-const systemInstruction = `You are an expert code assistant integrated into VS Code. Your task is to clean up the user's code.
-Rules:
-- Focus on improving readability, removing redundancy, and applying best practices (Do only what the user asks for).
-- Do not rename variable and function names unless asked by the user.
-- preserve tabs and spaces unless asked by the user. you may only be getting part of the code and it may be important.
-- Do not add any comment at the top of the code.
-- Do not assume any franework is being used unless it is obvious from the code provided or the user specifies this.
-- If you include an import or something and additional setup is required by the user, leave a comment explaining how to install the required tool.
+const systemInstruction = `You are an expert code assistant integrated into VS Code, acting as a direct code modification tool. Follow these rules precisely:
+
+[Code Modification Rules]
+- Focus on improving readability, removing redundancy, and applying best practices.
+- Preserve original indentation (tabs/spaces) unless specifically improving alignment. Be mindful that you might only see part of the code.
 - Add concise comments ONLY above lines or blocks of code you have significantly changed, explaining the reason for the change.
-- Preserve the original functionality. Do not make unnecessary changes if the code is already clean and functional.
-- IMPORTANT: Respond ONLY with the complete, modified code. Do not include any introductory phrases (like "Here's the cleaned code:"), concluding remarks, or markdown code fences (\`\`\`). Just the raw code.`;
+- Do not add any comment at the very top of the returned code snippet.
+- Do not add 'integrity' or 'crossorigin' attributes when adding HTML script/link tags unless requested.
+- Do not assume a framework is being used unless obvious from the code or specified by the user.
+- If adding external dependencies/imports, add a comment explaining how to install the required tool/library.
+- When only part of the code is sent for editing (context provided separately), ONLY return the modified version of the originally selected part, not the surrounding context.
+
+[CRITICAL OUTPUT FORMATTING RULES - Non-negotiable]
+- Your response MUST contain ONLY the raw, modified code text, suitable for direct programmatic insertion into a file.
+- Your entire output MUST start with the first character of the code and end with the last character of the code.
+- Therefore, DO NOT include:
+    - ANY introductory text (e.g., "Here is the code:", "Okay, I've cleaned...")
+    - ANY concluding text or explanations after the code.
+    - ABSOLUTELY NO markdown code fences (\`\`\`) or any other wrapping characters around the code block.
+- Failure to adhere to this raw code output format will break the tool. ONLY CODE TEXT.
+`;
 
 
 function getSelectionRange() {
@@ -87,7 +97,14 @@ async function promptTheModel(thePrompt){
 			}
 			// end of getting selected text
 	
-			const prompt = "language : " + codeLanguage + " | "  + thePrompt +  userCode;
+			// Setting the prompt
+			let prompt = "some prompt"
+			if(selectedText){
+				prompt = "language : " + codeLanguage + " | "  + thePrompt +  userCode + "\ncontext:\n" + vscode.window.activeTextEditor.document.getText();
+			}else{
+				prompt = "language : " + codeLanguage + " | "  + thePrompt +  userCode;
+			}
+			// const prompt = "language : " + codeLanguage + " | "  + thePrompt +  userCode;
 	
 			// get the model
 			const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
@@ -115,6 +132,11 @@ async function promptTheModel(thePrompt){
 						}
 						
 					});
+
+					// format the code
+
+					await vscode.commands.executeCommand('editor.action.formatDocument');
+
 				}else{
 
 					try {
