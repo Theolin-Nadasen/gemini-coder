@@ -5,7 +5,7 @@
   "icon": "images/icon.png",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Theolin-Nadasen/gemini-coder"
+    "url": "https://github.com/Theolin-Nadasen/gemini-coder.git"
   },
   "version": "1.0.0",
   "engines": {
