@@ -2,7 +2,7 @@
   "name": "gemini-coder",
   "displayName": "Gemini-Coder",
   "description": "Write code with the help of AI",
-  "publisher": "Theolin Nadasen",
+  "publisher": "Theolin-Nadasen",
   "icon": "images/icon.png",
   "repository": {
     "type": "git",
