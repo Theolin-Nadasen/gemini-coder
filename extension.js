@@ -413,7 +413,7 @@ function activate(context) {
 				context.globalState.update("GeminiCoderActivated", null);
     
                 // activativation code here
-				if(await activateLicense(false)){
+				if(await activateLicense(true)){
 					context.globalState.update("GeminiCoderActivated", true);
 					vscode.window.showInformationMessage("Congratulations! Your license was activated");
 				}else{
