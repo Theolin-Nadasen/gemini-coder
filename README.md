@@ -6,7 +6,8 @@ Unlike other AI tools, Gemini Coder is non-intrusive — it will never modify or
 
 You can even view AI-suggested changes before applying them, so nothing gets overwritten unless you’re ready.
 
----
+
+![Demo of the tool](images/demo1.gif)
 
 ## Features
 

@@ -2,6 +2,7 @@
   "name": "gemini-coder",
   "displayName": "Gemini-Coder",
   "description": "Write code with the help of AI",
+  "icon": "images/icon.png",
   "version": "1.0.0",
   "engines": {
     "vscode": "^1.98.0"
