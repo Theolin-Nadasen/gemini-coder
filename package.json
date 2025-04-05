@@ -3,6 +3,10 @@
   "displayName": "Gemini-Coder",
   "description": "Write code with the help of AI",
   "icon": "images/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Theolin-Nadasen/gemini-coder"
+  },
   "version": "1.0.0",
   "engines": {
     "vscode": "^1.98.0"
