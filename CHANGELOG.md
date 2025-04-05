@@ -1,9 +1,8 @@
 # Change Log
 
-All notable changes to the "ai-coder" extension will be documented in this file.
+### 1.0.0
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
-
-## [Unreleased]
+Initial release of Gemini Coder  
+Includes: code generation, comment assistant, code cleanup, selective editing, and preview mode.
 
 - Initial release

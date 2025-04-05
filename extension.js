@@ -64,7 +64,7 @@ async function activateLicense(checkUses) {
 
         if (!data.success) return false;
 
-		console.log(data);
+		console.log("Got response from key validation");
 
         const purchase = data.purchase;
         let invalid =
@@ -133,7 +133,7 @@ async function promptTheModel(thePrompt){
 			const GEMINI_API_KEY = config.get('apiKey');
 			const SELECTED_MODEL = config.get('modelName');
 
-			console.log(SELECTED_MODEL);
+			console.log("Model : " + SELECTED_MODEL);
 	
 			if (!GEMINI_API_KEY) {
 				vscode.window.showErrorMessage(
@@ -150,7 +150,6 @@ async function promptTheModel(thePrompt){
 			// --- END OF API KEY HANDLING ---
 	
 	
-			vscode.window.showInformationMessage("model is generating");
 	
 			// check if the user selected text
 			const selectedText = getSelectionRange();
@@ -205,7 +204,7 @@ async function promptTheModel(thePrompt){
 
 					await vscode.commands.executeCommand('editor.action.formatDocument');
 
-				}else{
+				}else if(proceed === "show code (manual)"){
 
 					try {
 						// Encode the content to be safely included in a URI query
@@ -235,6 +234,8 @@ async function promptTheModel(thePrompt){
 
 
 					vscode.window.showInformationMessage("Code not changed.");
+				}else{
+					return;
 				}
 				
 			}
@@ -349,7 +350,7 @@ function activate(context) {
 		}else{
 			// check if the license is still valid
 
-			const stillValid = activateLicense(false);
+			const stillValid = await activateLicense(false);
 
 			if(!stillValid){
 				vscode.window.showErrorMessage("The license is no longer valid");

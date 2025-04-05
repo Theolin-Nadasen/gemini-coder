@@ -1,10 +1,8 @@
-# ai-coder README
+**Gemini Coder — AI-Powered Coding Assistant for VS Code**
 
-**Gemini Coder Pro — AI-Powered Coding Assistant for VS Code**
+Take your coding productivity to the next level with Gemini Coder — an AI extension built for real developers who want precision, clarity, and speed.
 
-Take your coding productivity to the next level with Gemini Coder Pro — an AI extension built for real developers who want precision, clarity, and speed.
-
-Unlike other AI tools, Gemini Coder Pro is non-intrusive — it will never modify or suggest code unless you explicitly ask it to. You’re always in control.
+Unlike other AI tools, Gemini Coder is non-intrusive — it will never modify or suggest code unless you explicitly ask it to. You’re always in control.
 
 You can even view AI-suggested changes before applying them, so nothing gets overwritten unless you’re ready.
 
@@ -12,14 +10,14 @@ You can even view AI-suggested changes before applying them, so nothing gets ove
 
 ## Features
 
-✅ **Generate Code**  
-Let AI write entire functions or snippets based on your description.
-
 ✅ **Add Comments**  
 Smart, human-like comments explain what each part of your code does, making it easier to understand and maintain.
 
 ✅ **Clean Code**  
 Remove redundant lines, fix formatting, and eliminate clutter instantly.
+
+✅ **Generate Code [PRO Feature]**  
+Let AI write entire functions or snippets based on your prompt.
 
 ✅ **Selective Editing**  
 Only selected text gets modified — Gemini uses the full file for context but edits just what you highlight. No selection? No problem — it can process the entire file too.
@@ -28,7 +26,7 @@ Only selected text gets modified — Gemini uses the full file for context but e
 The tool never runs in the background or changes anything without your command.
 
 ✅ **Preview Changes**  
-Choose to see suggested edits first — apply or reject with a single click.
+Choose to see suggested edits first — don't worry about breaking your code.
 
 🧠 **Built for real-world developers**  
 🚀 **Lightweight, fast, and focused**  
@@ -48,15 +46,15 @@ Choose to see suggested edits first — apply or reject with a single click.
 
 This extension contributes the following settings:
 
-- `geminiCoder.enable`: Enable/disable the extension.
-- `geminiCoder.apiKey`: Set your license key for activation.
-- `geminiCoder.showPreview`: Toggle preview mode for AI suggestions.
+- `gemini-coder.licenseKey`: Set your license key for pro features.
+- `gemini-coder.apiKey`: Set your api key for using googles gemini models.
+- `gemini-coder.modelName`: Select the model you want to use.
 
 ---
 
 ## Known Issues
 
-- Large files (over ~2000 lines) may lead to slower processing or API timeouts.
+- Large files may lead to slower processing or API timeouts.
 - VS Code must have internet access — offline mode is not yet supported.
 
 ---
@@ -65,25 +63,16 @@ This extension contributes the following settings:
 
 ### 1.0.0
 
-Initial release of Gemini Coder Pro  
+Initial release of Gemini Coder  
 Includes: code generation, comment assistant, code cleanup, selective editing, and preview mode.
 
 ---
 
-## Working with Markdown
+## Activate Pro License
 
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
+To activate the pro features you can get a license at :
 
-- Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-- Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-- Press `Ctrl+Space` to see a list of Markdown snippets
+- [Get a license](https://theolinbusiness.gumroad.com/l/tuqeh)
 
----
-
-## For more information
-
-- [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-- [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy Gemini Coder Pro and happy coding!**
+**Enjoy Gemini Coder and happy coding!**
 
