@@ -25,6 +25,72 @@ const systemInstruction = `You are an expert code assistant integrated into VS C
 `;
 
 
+async function activateLicense(checkUses) {
+	 // Check the user has a license key
+
+	const config = vscode.workspace.getConfiguration('gemini-coder');
+	// Retrieve the specific setting value using its key ('apiKey')
+	const GEMINI_LICENSE = config.get('licenseKey');
+
+	if(!GEMINI_LICENSE){
+		console.log('no key');
+
+		// Show prompt to enter license
+
+		vscode.window.showErrorMessage(
+			'please enter a license key and try again',
+			'Open Settings' // Add an action button
+		).then(selection => {
+			// If the user clicks "Open Settings", open the settings UI to the specific setting
+			if (selection === 'Open Settings') {
+				vscode.commands.executeCommand('workbench.action.openSettings', 'gemini-coder');
+			}
+		});
+
+		return false;
+	}
+
+    try {
+        const response = await fetch('https://api.gumroad.com/v2/licenses/verify', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                product_id: "7nVZcaPU6REWi4v-9qHplQ==",
+                license_key: GEMINI_LICENSE
+            })
+        });
+
+        const data = await response.json();
+
+        if (!data.success) return false;
+
+		console.log(data);
+
+        const purchase = data.purchase;
+        let invalid =
+            purchase.refunded ||
+            purchase.disputed ||
+            purchase.chargebacked;
+
+		if(checkUses){
+			invalid = data.uses >= 2;
+		}
+
+		if(invalid){
+			console.log('The key is not valid');
+		}
+
+        return !invalid;
+
+    } catch (error) {
+        console.error("License validation failed:", error);
+        return false;
+    }
+}
+
+
+
+// get the range of selected text
 function getSelectionRange() {
     const editor = vscode.window.activeTextEditor;
     if (!editor) return null; // No active editor
@@ -41,6 +107,7 @@ function getSelectionRange() {
     return null; // No text selected
 }
 
+// prompt the user to type in something
 async function promptUserForInput(question) {
     const input = await vscode.window.showInputBox({
         placeHolder: "Create a function to print 'hello world'", // Optional placeholder text
@@ -55,6 +122,7 @@ async function promptUserForInput(question) {
     }
 }
 
+// send a prompt to the model
 async function promptTheModel(thePrompt){
 
 
@@ -189,6 +257,7 @@ function activate(context) {
 	// This line of code will only be executed once when your extension is activated
 	console.log('Gemini Coder is running');
 
+
 	// provider for the display that shows suggestions
 	const suggestionProvider = vscode.workspace.registerTextDocumentContentProvider('gemini-suggestion', {
         provideTextDocumentContent(uri) {
@@ -217,6 +286,7 @@ function activate(context) {
 				cancellable: false, // Prevents cancellation
 			},
 			async (progress) => {
+
 				progress.report({ message: "Generating improvements..." });
 	
 				// Call your AI function and wait for the result
@@ -260,6 +330,33 @@ function activate(context) {
 	const generateCode = vscode.commands.registerCommand('gemini-coder.generate', async function () {
 		// function for generating code
 
+		// only for pro users
+		const isActivated = context.globalState.get("GeminiCoderActivated");
+		if(!isActivated){
+			// Show prompt to enter license
+
+			vscode.window.showErrorMessage(
+				'Not Activated: please activate to enable pro features',
+				'Open Settings' // Add an action button
+			).then(selection => {
+				// If the user clicks "Open Settings", open the settings UI to the specific setting
+				if (selection === 'Open Settings') {
+					vscode.commands.executeCommand('workbench.action.openSettings', 'gemini-coder');
+				}
+			});
+
+			return;
+		}else{
+			// check if the license is still valid
+
+			const stillValid = activateLicense(false);
+
+			if(!stillValid){
+				vscode.window.showErrorMessage("The license is no longer valid");
+				context.globalState.update("GeminiCoderActivated", null);
+			}
+		}
+
 		const userInput = await promptUserForInput("Please describe what you would like generated or how you would like the current code to be changed :")
 
 		if(!userInput){
@@ -292,6 +389,42 @@ function activate(context) {
 	});
 
 	context.subscriptions.push(generateCode);
+
+
+	// Adds comments to your code
+	const activate = vscode.commands.registerCommand('gemini-coder.activate', async function () {
+		// function for adding comments to code
+
+		if(context.globalState.get("GeminiCoderActivated")){
+			vscode.window.showInformationMessage("Already Activated!")
+			return;
+		}
+
+		await vscode.window.withProgress(
+            {
+                location: vscode.ProgressLocation.Notification,
+                title: "Gemini Coder is activating...",
+                cancellable: false, // Prevents cancellation
+            },
+            async (progress) => {
+                progress.report({ message: "Activating..." });
+				// testing the key. delete this code
+				context.globalState.update("GeminiCoderActivated", null);
+    
+                // activativation code here
+				if(await activateLicense(false)){
+					context.globalState.update("GeminiCoderActivated", true);
+					vscode.window.showInformationMessage("Congratulations! Your license was activated");
+				}else{
+					vscode.window.showErrorMessage("Sorry, We failed to activate your license. please try again")
+				}
+
+            }
+        )
+
+	});
+
+	context.subscriptions.push(activate);
 }
 
 // This method is called when your extension is deactivated

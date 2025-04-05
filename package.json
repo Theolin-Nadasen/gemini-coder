@@ -19,42 +19,53 @@
       },
       {
         "command": "gemini-coder.comment",
-        "title" : "Add Comments (Gemini Coder)"
+        "title": "Add Comments (Gemini Coder)"
       },
       {
         "command": "gemini-coder.generate",
-        "title": "Generate Code (Gemini Coder)"
+        "title": "Generate Code (Gemini Coder) [Pro]"
+      },
+      {
+        "command": "gemini-coder.activate",
+        "title": "Activate Pro (Gemini Coder)"
       }
     ],
     "configuration": {
-      "title": "gemini-coder", 
+      "title": "gemini-coder",
       "properties": {
-        "gemini-coder.apiKey": { 
+        "gemini-coder.apiKey": {
           "type": "string",
-          "default": "", 
-          "description": "Your Google AI Studio API Key.", 
+          "default": "",
+          "description": "Your Google AI Studio API Key.",
           "markdownDescription": "**Required** Get your Gemini API Key from [Google AI Studio](https://aistudio.google.com/app/apikey).",
           "scope": "machine-overridable"
         },
-                "gemini-coder.modelName": {
-                  "type": "string",
-                  "default": "gemini-1.5-flash-latest",
-                  "description": "Select the Gemini model to use for code generation.",
-                  "markdownDescription": "Choose the underlying Google Gemini model. Different models have varying capabilities, performance, and potential costs. See [Google AI documentation](https://ai.google.dev/models/gemini) for details.",
-                  "enum": [
-                    "gemini-2.0-flash-thinking-exp-01-21",
-                    "gemini-2.0-flash-lite",
-                    "gemini-2.0-flash", 
-                    "gemini-2.5-pro-exp-03-25"
-                  ],
-                  "enumDescriptions": [
-                    "Gemini 2.0 flash thinking (Experimental)",
-                    "Gemini 2.0 flash light",
-                    "Gemini 2.0 flash",
-                    "Gemini 2.5 Pro (Experimental)"
-                  ],
-                  "scope": "machine-overridable"
-                }
+        "gemini-coder.licenseKey": {
+          "type": "string",
+          "default": "",
+          "description": "Your Gemini Coder Pro License Key.",
+          "markdownDescription": "**Required** Get your Gemini Coder Key from [Purchase License](https://theolinbusiness.gumroad.com/l/tuqeh).\n**run the activate function after entering a key**",
+          "scope": "machine-overridable"
+        },
+        "gemini-coder.modelName": {
+          "type": "string",
+          "default": "gemini-2.5-pro-exp-03-25",
+          "description": "Select the Gemini model to use for code generation.",
+          "markdownDescription": "Choose the underlying Google Gemini model. Different models have varying capabilities, performance, and potential costs. See [Google AI documentation](https://ai.google.dev/models/gemini) for details.",
+          "enum": [
+            "gemini-2.0-flash-thinking-exp-01-21",
+            "gemini-2.0-flash-lite",
+            "gemini-2.0-flash",
+            "gemini-2.5-pro-exp-03-25"
+          ],
+          "enumDescriptions": [
+            "Gemini 2.0 flash thinking (Experimental)",
+            "Gemini 2.0 flash light",
+            "Gemini 2.0 flash",
+            "Gemini 2.5 Pro (Experimental)"
+          ],
+          "scope": "machine-overridable"
+        }
       }
     }
   },

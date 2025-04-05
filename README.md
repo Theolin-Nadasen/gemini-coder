@@ -1,65 +1,89 @@
 # ai-coder README
 
-This is the README for your extension "ai-coder". After writing up a brief description, we recommend including the following sections.
+**Gemini Coder Pro — AI-Powered Coding Assistant for VS Code**
+
+Take your coding productivity to the next level with Gemini Coder Pro — an AI extension built for real developers who want precision, clarity, and speed.
+
+Unlike other AI tools, Gemini Coder Pro is non-intrusive — it will never modify or suggest code unless you explicitly ask it to. You’re always in control.
+
+You can even view AI-suggested changes before applying them, so nothing gets overwritten unless you’re ready.
+
+---
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+✅ **Generate Code**  
+Let AI write entire functions or snippets based on your description.
 
-For example if there is an image subfolder under your extension project workspace:
+✅ **Add Comments**  
+Smart, human-like comments explain what each part of your code does, making it easier to understand and maintain.
 
-\!\[feature X\]\(images/feature-x.png\)
+✅ **Clean Code**  
+Remove redundant lines, fix formatting, and eliminate clutter instantly.
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+✅ **Selective Editing**  
+Only selected text gets modified — Gemini uses the full file for context but edits just what you highlight. No selection? No problem — it can process the entire file too.
+
+✅ **Non-Intrusive by Design**  
+The tool never runs in the background or changes anything without your command.
+
+✅ **Preview Changes**  
+Choose to see suggested edits first — apply or reject with a single click.
+
+🧠 **Built for real-world developers**  
+🚀 **Lightweight, fast, and focused**  
+💻 **Runs directly inside Visual Studio Code**
+
+---
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+- **Visual Studio Code**
+- **Internet access** (required for AI processing)
+- **Valid license key** (included with purchase via Gumroad)
+
+---
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
 This extension contributes the following settings:
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+- `geminiCoder.enable`: Enable/disable the extension.
+- `geminiCoder.apiKey`: Set your license key for activation.
+- `geminiCoder.showPreview`: Toggle preview mode for AI suggestions.
+
+---
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+- Large files (over ~2000 lines) may lead to slower processing or API timeouts.
+- VS Code must have internet access — offline mode is not yet supported.
+
+---
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
-
 ### 1.0.0
 
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
+Initial release of Gemini Coder Pro  
+Includes: code generation, comment assistant, code cleanup, selective editing, and preview mode.
 
 ---
 
 ## Working with Markdown
 
-You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
+You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
 
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets
+- Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
+- Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
+- Press `Ctrl+Space` to see a list of Markdown snippets
+
+---
 
 ## For more information
 
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+- [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
+- [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
 
-**Enjoy!**
+**Enjoy Gemini Coder Pro and happy coding!**
+
