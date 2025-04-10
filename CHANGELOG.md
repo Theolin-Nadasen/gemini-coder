@@ -6,3 +6,7 @@ Initial release of Gemini Coder
 Includes: code generation, comment assistant, code cleanup, selective editing, and preview mode.
 
 - Initial release
+
+### 1.0.2
+
+Fixed bug with activation

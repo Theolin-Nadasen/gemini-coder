@@ -67,6 +67,10 @@ This extension contributes the following settings:
 Initial release of Gemini Coder  
 Includes: code generation, comment assistant, code cleanup, selective editing, and preview mode.
 
+### 1.0.2
+
+Fixed bug with activation
+
 ---
 
 ## Activate Pro License

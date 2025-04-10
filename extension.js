@@ -336,15 +336,21 @@ function activate(context) {
 		if(!isActivated){
 			// Show prompt to enter license
 
-			vscode.window.showErrorMessage(
-				'Not Activated: please activate to enable pro features',
-				'Open Settings' // Add an action button
-			).then(selection => {
-				// If the user clicks "Open Settings", open the settings UI to the specific setting
-				if (selection === 'Open Settings') {
-					vscode.commands.executeCommand('workbench.action.openSettings', 'gemini-coder');
-				}
-			});
+			// activativation code here
+			if(await activateLicense(false)){
+				context.globalState.update("GeminiCoderActivated", true);
+			}else{			
+				// show not activated
+				vscode.window.showErrorMessage(
+					'Not Activated: please activate to enable pro features',
+					'Open Settings' // Add an action button
+				).then(selection => {
+					// If the user clicks "Open Settings", open the settings UI to the specific setting
+					if (selection === 'Open Settings') {
+						vscode.commands.executeCommand('workbench.action.openSettings', 'gemini-coder');
+					}
+				});
+			}
 
 			return;
 		}else{
