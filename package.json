@@ -9,7 +9,7 @@
     "type": "git",
     "url": "https://github.com/Theolin-Nadasen/gemini-coder.git"
   },
-  "version": "1.0.2",
+  "version": "1.0.3",
   "engines": {
     "vscode": "^1.98.0"
   },
@@ -51,7 +51,7 @@
           "type": "string",
           "default": "",
           "description": "Your Gemini Coder Pro License Key.",
-          "markdownDescription": "**Required** Get your Gemini Coder Key from [Purchase License](https://theolinbusiness.gumroad.com/l/tuqeh).\n**run the activate function after entering a key**",
+          "markdownDescription": "**Required** Get your Gemini Coder Key from [Get License](https://gum.new/gum/cma3z94st001203l4fjbycq6z).\n**run the activate function after entering a key**",
           "scope": "machine-overridable"
         },
         "gemini-coder.modelName": {

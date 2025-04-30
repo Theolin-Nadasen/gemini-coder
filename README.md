@@ -77,7 +77,7 @@ Fixed bug with activation
 
 To activate the pro features you can get a license at :
 
-- [Get a license](https://theolinbusiness.gumroad.com/l/tuqeh)
+- [Get a license](https://gum.new/gum/cma3z94st001203l4fjbycq6z)
 
 **Enjoy Gemini Coder and happy coding!**
 
