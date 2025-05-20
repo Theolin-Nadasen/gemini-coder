@@ -10,3 +10,7 @@ Includes: code generation, comment assistant, code cleanup, selective editing, a
 ### 1.0.2
 
 Fixed bug with activation
+
+### 1.0.4
+
+Removed outdated models and added new ones
