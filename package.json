@@ -9,7 +9,7 @@
     "type": "git",
     "url": "https://github.com/Theolin-Nadasen/gemini-coder.git"
   },
-  "version": "1.0.4",
+  "version": "1.0.5",
   "engines": {
     "vscode": "^1.98.0"
   },
@@ -60,13 +60,11 @@
           "description": "Select the Gemini model to use for code generation.",
           "markdownDescription": "Choose the underlying Google Gemini model. Different models have varying capabilities, performance, and potential costs. See [Google AI documentation](https://ai.google.dev/models/gemini) for details.",
           "enum": [
-            "gemini-2.0-flash-lite",
             "gemini-2.0-flash",
             "gemini-2.5-flash-preview-04-17",
             "gemini-2.5-pro-preview-05-06"
           ],
           "enumDescriptions": [
-            "Gemini 2.0 flash light",
             "Gemini 2.0 flash",
             "Gemini 2.5 flash (preview 04)",
             "Gemini 2.5 flash (preview 05)"

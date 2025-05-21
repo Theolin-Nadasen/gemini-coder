@@ -14,3 +14,7 @@ Fixed bug with activation
 ### 1.0.4
 
 Removed outdated models and added new ones
+
+### 1.0.5
+
+Removed model that was not working with gemini coder
